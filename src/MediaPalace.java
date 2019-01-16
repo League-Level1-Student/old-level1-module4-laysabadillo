@@ -43,7 +43,7 @@ public class MediaPalace {
 		Icon icon = new ImageIcon(filePath);
 		return new JLabel(icon);
 	}
-
+	
 	/*
 	 * To use this method, you must first download JLayer: http://www.javazoom.net/javalayer/javalayer.html, and add the jar to project.
 	 * Then uncomment this method.
@@ -103,5 +103,4 @@ public class MediaPalace {
 	}
 
 }
-
 
