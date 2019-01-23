@@ -24,7 +24,8 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	 * When the user clicks on a secret place, stuff will happen.
 	 * 
 	 * 1. Make the frame respond to mouse clicks.
-	 * 2. When the mouse is clicked, use the Media Palace (read the code in the default package) to play sounds, show images or speak.
+	 * 2. When the mouse is clicked, use the Media Palace (read the code in the default package) to play sounds,
+	 *  show images or speak.
 	 * 3. backgroundImage.getRGB(keyEvent.getX(), keyEvent.getY()) will give you the color of the current pixel.
 	 */
 	
@@ -32,11 +33,10 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	public static void main(String[] args) throws Exception {
 		SwingUtilities.invokeLater(new MagicBox());
-	
-		
 		
 	}
-
+	MediaPalace media = new MediaPalace();
+	
 	@Override
 	public void run() {
 		try {
@@ -46,15 +46,15 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 			System.err.println(w.getMessage());
 		}
 	}
+	JFrame frame = new JFrame("The Magic Box contains many secrets...");
 
 	private void createUI() {
-		JFrame frame = new JFrame("The Magic Box contains many secrets...");
 		frame.add(this);
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
-		frame.addMouseMotionListener(null);
+		frame.addMouseListener(this);
 	}
 
 	private void loadBackgroundImage() throws Exception {
@@ -68,19 +68,34 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 
 	@Override
 	public void paintComponent(Graphics g) {
+		if(switches != true)
 		g.drawImage(backgroundImage, 0, 0, null);
-	}
+		else {
+			try {
+				backgroundImage = ImageIO.read(new File("src/Panda.jpeg"));
+			} catch (IOException e) {
+				System.out.println("failed to load file");
+			}
+			g.drawImage(backgroundImage, 0, 0, null);
+		}}
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
-
+boolean switches = false;
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(backgroundImage.getRGB(e.getX(), e.getY())==-4082814) {
+			switches = true;
+			
+			System.out.println("works");
+			this.repaint();
+
+			
+		}
 	}
 
 	@Override
