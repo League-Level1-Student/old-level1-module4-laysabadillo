@@ -15,7 +15,6 @@ public class Chuckle_Clicker implements MouseListener {
 		clicker.makeButtons();
 
 	}
-	
 
 	JButton button2 = new JButton();
 	JButton button = new JButton();
@@ -37,6 +36,8 @@ void makeButtons() {
 	button2.setSize(50, 50);
 	
 	frame.pack();
+	
+	
 	
 }
 
