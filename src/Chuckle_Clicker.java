@@ -37,8 +37,6 @@ void makeButtons() {
 	
 	frame.pack();
 	
-	
-	
 }
 
 @Override
