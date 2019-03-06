@@ -10,10 +10,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import javafx.scene.transform.Translate;
+
 public class PigLatin implements MouseListener {
 	
 	public static void main(String[] args) {
-
 		PigLatin word = new PigLatin();
 		word.create();
 }
@@ -52,9 +53,11 @@ public class PigLatin implements MouseListener {
 	@Override
 	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
-		
-		
+		if(e.getSource() == button) {
+			String text = textbox.getText();
+			text = PigLatinTools.translate(text);
+			textbox2.setText(text);
+		}
 	}
 
 	@Override
