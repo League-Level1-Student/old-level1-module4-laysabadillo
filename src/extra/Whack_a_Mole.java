@@ -84,7 +84,6 @@ public class Whack_a_Mole implements ActionListener {
 		buttonSetup(button23);
 		buttonSetup(button24);
 	
-		
 		frame.setSize(250, 300);
 
 	}
