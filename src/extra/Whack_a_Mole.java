@@ -2,10 +2,12 @@ package extra;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Date;
 import java.util.Random;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class Whack_a_Mole implements ActionListener {
@@ -51,11 +53,35 @@ public class Whack_a_Mole implements ActionListener {
 			
 		}
 	}
-	
+	JFrame frame = new JFrame();
 	JPanel panel = new JPanel();
 	void create() {
+		panel = new JPanel();
+		button1 = new JButton("1");
+		button2 = new JButton("2");
+		button3 = new JButton("3");
+		button4 = new JButton("4");
+		button5 = new JButton("5");
+		button6 = new JButton("6");
+		button7 = new JButton("7");
+		button8 = new JButton("8");
+		button9 = new JButton("9");
+		button10 = new JButton("10");
+		button11 = new JButton("11");
+		button12 = new JButton("12");
+		button13 = new JButton("13");
+		button14 = new JButton("14");
+		button15 = new JButton("15");
+		button16 = new JButton("16");
+		button17 = new JButton("17");
+		button18 = new JButton("18");
+		button19 = new JButton("19");
+		button20 = new JButton("20");
+		button21 = new JButton("21");
+		button22 = new JButton("22");
+		button23 = new JButton("23");
+		button24 = new JButton("24");
 		
-		JFrame frame = new JFrame();
 		frame.setVisible(true);
 		frame.setTitle("Whack a Button");
 		frame.add(panel);
@@ -91,9 +117,20 @@ public class Whack_a_Mole implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
+		JButton button = (JButton) e.getSource();
 		if(button.getText().equals("mole")){
-			speak("hello");
+			speak("Ahh");
+			frame.remove(panel);
+			number = gen.nextInt(24)+1;
+			create(); 
 		}
+	}
+	
+	private void endGame(Date timeAtStart, int molesWhacked) {
+	     Date timeAtEnd = new Date();
+	     JOptionPane.showMessageDialog(null, "Your whack rate is "
+	          + ((timeAtEnd.getTime() - timeAtStart.getTime()) / 1000.00 / molesWhacked)
+	          + " moles per second.");
 	}
 	
 	void speak(String words) {
@@ -103,6 +140,5 @@ public class Whack_a_Mole implements ActionListener {
 	          e.printStackTrace();
 	     }
 	}
-	
-	
 }
+
