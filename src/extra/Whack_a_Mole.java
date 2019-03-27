@@ -124,6 +124,9 @@ public class Whack_a_Mole implements ActionListener {
 			number = gen.nextInt(24)+1;
 			create(); 
 		}
+		
+		if(button.getText().equals())
+		
 	}
 	
 	private void endGame(Date timeAtStart, int molesWhacked) {
