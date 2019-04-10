@@ -15,9 +15,11 @@ public class Whack_a_Mole implements ActionListener {
 	public static void main(String[] args) {
 		
 		Whack_a_Mole mole = new Whack_a_Mole();
+		
 		mole.create();
 	}
 	
+	Date D = new Date();
 	Random gen = new Random();
 	int number = gen.nextInt(24)+1;
 	JButton button1 = new JButton("1");
@@ -114,6 +116,10 @@ public class Whack_a_Mole implements ActionListener {
 
 	}
 
+	int bad = 0;
+	int count = 0;
+	int moles = 0;
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
@@ -121,12 +127,23 @@ public class Whack_a_Mole implements ActionListener {
 		if(button.getText().equals("mole")){
 			speak("Ahh");
 			frame.remove(panel);
+			moles++;
 			number = gen.nextInt(24)+1;
 			create(); 
+		} else {
+			count++;
+			JOptionPane.showMessageDialog(null, "Be Nice");
 		}
-		
-		if(button.getText().equals())
-		
+		if(count>5) {
+			JOptionPane.showMessageDialog(null, "You Have Lost");
+			endGame(D, moles);
+			frame.dispose();
+		}
+		if(moles>10) {
+			JOptionPane.showMessageDialog(null, "You Have Won!");
+			endGame(D, moles);
+			frame.dispose();
+		}
 	}
 	
 	private void endGame(Date timeAtStart, int molesWhacked) {
